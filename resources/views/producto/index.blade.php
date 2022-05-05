@@ -62,5 +62,6 @@
     </tbody>
 
 </table>
+{!! $productos->links() !!}
 </div>
 @endsection
