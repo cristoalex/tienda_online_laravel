@@ -18,13 +18,20 @@ mostra la lista de productos
         @foreach ($productos as $producto)
         <tr>
             <td>{{$producto->id}}</td>
-            <td>{{$producto->Foto}}</td>
+
+
+            <td>
+                <img src="{{asset('storage').'/'.$producto->Foto}}" width="100" alt="100">
+                
+            </td>
+
+
             <td>{{$producto->Descripcion}}</td>
             <td>{{$producto->Precio}}</td>
             <td>
                 
                 <a href="{{url('/producto/'.$producto->id.'/edit')}}">
-                    Edita
+                    Editar
                 </a>        
                  | 
 
