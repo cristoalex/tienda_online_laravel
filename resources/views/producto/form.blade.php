@@ -1,28 +1,41 @@
 <h1>{{ $modo }} Producto</h1>
 
-<br>
+@if(count($errors)>0)
+<div class="alert alert-danger" role="alert">
+    <ul>
+        @foreach($errors->all() as $error)
+        <li>{{$error}}</li>
+        @endforeach
+    </ul>
+</div>
 
-<label for="Nombre">Nombre</label>
-<input type="text" name="Nombre" value="{{isset($producto->Nombre)?$producto->Nombre:''}}" id="Nombre">
-<br>
 
-<label for="Descripcion">Descripcion</label>
-<input type="text" name="Descripcion" value="{{isset($producto->Descripcion)?$producto->Descripcion:''}}" id="Descripcion">
-<br>
-
-<label for="Precio">Precio</label>
-<input type="text" name="Precio" value="{{isset($producto->Precio)?$producto->Precio:''}}" id="Precio">
-<br>
-
-<label for="Foto">Foto</label>
-@if(isset($producto->Foto))
-<img src="{{asset('storage').'/'.$producto->Foto}}" width="100" alt="100">
 @endif
-<input type="file" name="Foto"  id="Foto">
+
+<div class="form-group">
+<label for="Nombre">Nombre</label>
+<input type="text" class="form-control" name="Nombre" value="{{isset($producto->Nombre)?$producto->Nombre:old('Nombre')}}" id="Nombre">
+</div>
+
+<div class="form-group">
+<label for="Descripcion">Descripcion</label>
+<input type="text" class="form-control" name="Descripcion" value="{{isset($producto->Descripcion)?$producto->Descripcion:old('Descripcion')}}" id="Descripcion">
+</div>
+
+<div class="form-group">
+<label for="Precio">Precio</label>
+<input type="text" class="form-control" name="Precio" value="{{isset($producto->Precio)?$producto->Precio:old('Precio')}}" id="Precio">
+</div>
+
+<div class="form-group">
+<label for="Foto"></label>
+@if(isset($producto->Foto))
+<img class="img-thumbnail img-fluid" src="{{asset('storage').'/'.$producto->Foto}}" width="100" alt="100">
+@endif
+<input type="file" class="form-control" name="Foto"  id="Foto">
+</div>
+
 <br>
+<input class="btn btn-success" type="submit" value="{{ $modo }} datos">
 
-<input type="submit" value="{{ $modo }} datos">
-
-<a href="{{url('producto/')}}">Regresar</a>
-
-<br>
+<a class="btn btn-primary" href="{{url('producto/')}}">Regresar</a>

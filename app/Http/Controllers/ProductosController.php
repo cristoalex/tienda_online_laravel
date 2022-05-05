@@ -40,14 +40,28 @@ class ProductosController extends Controller
     public function store(Request $request)
     {
         //
+        $campos=[
+            'Nombre'=>'required|string|max:100',
+            'Descripcion'=>'required|string|max:300',
+            'Precio'=>'required|string|max:20',
+            'Foto'=>'required|max:10000|mimes:jpeg,png,jpg',
+        ];
+
+        $mensaje=[
+            'required'=>'El :attribute es requerido',
+            'Descripcion.required'=>'La Descripcion es requerida',
+            'Foto.required'=>'la Foto es requerida',
+        ];
+
+        $this->validate($request, $campos, $mensaje);
+
+
         //$datosProductos = request()->all();
         $datosProductos = request()->except('_token');
 
         if($request->hasFile('Foto')){
             $datosProductos['Foto']=$request->file('Foto')->store('uploads', 'public');
         }
-
-
 
         Productos::insert($datosProductos);
 
@@ -89,6 +103,27 @@ class ProductosController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $campos=[
+            'Nombre'=>'required|string|max:100',
+            'Descripcion'=>'required|string|max:300',
+            'Precio'=>'required|string|max:20',
+        ];
+
+        $mensaje=[
+            'required'=>'El :attribute es requerido',
+            'Descripcion.required'=>'La Descripcion es requerida',
+        ];
+
+        if($request->hasFile('Foto')){
+
+            $campos=['Foto'=>'required|max:10000|mimes:jpeg,png,jpg',];
+            $mensaje=['Foto.required'=>'la Foto es requerida',];
+        }
+
+        $this->validate($request, $campos, $mensaje);
+
+
         //
         $datosProductos = request()->except(['_token','_method']);
 
@@ -100,7 +135,8 @@ class ProductosController extends Controller
 
         Productos::where('id','=',$id)->update($datosProductos);
         $producto=Productos::findORFail($id);
-        return view('producto.edit', compact('producto'));
+        //return view('producto.edit', compact('producto'));
+        return redirect('producto')->with('mensaje','producto modificado');
     }
 
     /**

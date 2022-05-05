@@ -1,4 +1,7 @@
-formulario de edicion de producto
+@extends('layouts.app')
+@section('content')
+<div class="container">
+
 
 <form action="{{ url('/producto/'.$producto->id) }}" method="post" enctype="multipart/form-data">
 
@@ -9,5 +12,6 @@ formulario de edicion de producto
 
 
 </form>
-
+</div>
+@endsection
 
