@@ -1,4 +1,4 @@
-formulario que tendra dato en comun con create y edit
+<h1>{{ $modo }} Producto</h1>
 
 <br>
 
@@ -21,5 +21,8 @@ formulario que tendra dato en comun con create y edit
 <input type="file" name="Foto"  id="Foto">
 <br>
 
-<input type="submit" value="Enviar">
+<input type="submit" value="{{ $modo }} datos">
+
+<a href="{{url('producto/')}}">Regresar</a>
+
 <br>

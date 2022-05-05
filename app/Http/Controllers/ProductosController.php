@@ -51,7 +51,8 @@ class ProductosController extends Controller
 
         Productos::insert($datosProductos);
 
-        return response()->json($datosProductos);
+       // return response()->json($datosProductos);
+       return redirect('producto')->with('mensaje','Producto Agregado');
     }
 
     /**
@@ -111,7 +112,11 @@ class ProductosController extends Controller
     public function destroy($id)
     {
         //
-        Productos::destroy($id);
-        return redirect('producto');
+        $producto=Productos::findORFail($id);
+        if(Storage::delete('public/'.$producto->Foto)){
+            Productos::destroy($id);
+        }
+ 
+        return redirect('producto')->with('mensaje','producto borrado');
     }
 }

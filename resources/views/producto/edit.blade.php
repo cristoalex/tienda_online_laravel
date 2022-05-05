@@ -5,7 +5,7 @@ formulario de edicion de producto
 @csrf
 {{method_field('PATCH')}}
 
-@include('producto.form')
+@include('producto.form',['modo'=>'Editar']);
 
 
 </form>
