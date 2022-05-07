@@ -16,7 +16,7 @@ use Illuminate\Routing\RouteGroup;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('auth.login');//dar el login de pantalla principal
 });
 
 /*
@@ -28,10 +28,13 @@ Route::get('/producto/create',[ProductosController::class,'create']);
 */
 Route::resource('producto', ProductosController::class)->middleware('auth');
 
-Auth::routes(['register'=>false,'reset'=>false]);
+
+Auth::routes([/*'register'=>false,*/'reset'=>false]);
+
 // se puede cambiar la dirrecion de clase index a "la que se me de la gana :)"
 Route::get('/home', [ProductosController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/', [ProductosController::class, 'index'])->name('home');
 });
+
