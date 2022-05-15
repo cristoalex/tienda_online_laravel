@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductosController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Routing\RouteGroup;
 
 /*
@@ -32,6 +33,8 @@ Route::resource('producto', ProductosController::class)->middleware('auth');
 Auth::routes([/*'register'=>false,*/'reset'=>false]);
 
 // se puede cambiar la dirrecion de clase index a "la que se me de la gana :)"
+
+
 Route::get('/home', [ProductosController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function(){
