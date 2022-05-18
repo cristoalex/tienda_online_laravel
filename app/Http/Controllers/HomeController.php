@@ -28,7 +28,14 @@ class HomeController extends Controller
         return view('home');
         /*$productos = Productos::all();*/
         /*->get(['Foto','Precio', 'Nombre'])*/
-        $producto= Productos::paginate(6);
+    
+       
+        $productos= Productos::paginate(6);
         return view('home', compact('productos'));
+        
+
+
+
+
     }
 }
