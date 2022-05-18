@@ -27,7 +27,14 @@ Route::get('/producto', function () {
 
 Route::get('/producto/create',[ProductosController::class,'create']);
 */
-Route::resource('producto', ProductosController::class)->middleware('auth');
+
+Route::resource('producto', ProductosController::class);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+
+//Route::resource('producto', ProductosController::class)->middleware('auth');
 
 
 Auth::routes([/*'register'=>false,*/'reset'=>false]);
@@ -35,9 +42,9 @@ Auth::routes([/*'register'=>false,*/'reset'=>false]);
 // se puede cambiar la dirrecion de clase index a "la que se me de la gana :)"
 
 
-Route::get('/home', [ProductosController::class, 'index'])->name('home');
+//Route::get('/home', [ProductosController::class, 'index'])->name('home');
 
-Route::group(['middleware' => 'auth'], function(){
-    Route::get('/', [ProductosController::class, 'index'])->name('home');
-});
+//Route::group(['middleware' => 'auth'], function(){
+//    Route::get('/', [ProductosController::class, 'index'])->name('home');
+//});
 

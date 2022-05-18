@@ -37,6 +37,8 @@
                     <ul class="navbar-nav me-auto">
 
                         <li class="nav-item"> <a class="nav-link" href="{{ route('producto.index') }}">{{ __('Productos') }}</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('producto.create') }}">{{ __('Registrar productos') }}</a></li>
+                        <li class="nav-item"> <a class="nav-link" href="{{ route('home') }}">{{ __('mostrar') }}</a></li>
 
                     </ul>
 
