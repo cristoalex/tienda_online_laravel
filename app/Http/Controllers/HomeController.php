@@ -25,13 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
-        /*$productos = Productos::all();*/
+        //return view('home');
+        $products = Productos::all();
         /*->get(['Foto','Precio', 'Nombre'])*/
     
        
-        $productos= Productos::paginate(6);
-        return view('home', compact('productos'));
+        //$productos= Productos::paginate(6);
+        return view('home', compact('products'));
         
 
 

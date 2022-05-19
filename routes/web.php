@@ -32,6 +32,9 @@ Route::resource('producto', ProductosController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/', function(){
+    return redirect('/home');
+});
 
 
 //Route::resource('producto', ProductosController::class)->middleware('auth');
